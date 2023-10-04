@@ -23,26 +23,39 @@ const list = [
   },
 ];
 
+function List() {
+  return (
+    <ul>
+      {list.map((item) => (
+        <li key={item.objectID}>
+          <span>
+            <a href={item.url}>{item.title}</a>
+          </span>
+          <span> by {item.author}</span>
+          <span>({item.num_comments})</span>
+          <span>({item.points})</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Search() {
+  return (
+    <>
+      <lable htmlFor="search">Search: </lable>
+      <input id="search" type="text"></input>
+    </>
+  );
+}
+
 function App() {
   return (
     <div>
       <h1>Hello, {getTitle("React")}</h1>
-
-      <lable htmlFor="search">Search: </lable>
-      <input id="search" type="text"></input>
+      <Search />
       <hr />
-      <ul>
-        {list.map((item) => (
-          <li key={item.objectID}>
-            <span>
-              <a href={item.url}>{item.title}</a>
-            </span>
-            <span> by {item.author}</span>
-            <span>({item.num_comments})</span>
-            <span>({item.points})</span>
-          </li>
-        ))}
-      </ul>
+      <List />
     </div>
   );
 }

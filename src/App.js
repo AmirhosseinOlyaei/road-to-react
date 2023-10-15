@@ -31,11 +31,12 @@ const Item = ({ item }) => {
   );
 };
 
-function Search() {
+function Search(props) {
   const [searchTerm, setSearchTerm] = React.useState("");
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
     console.log(event.target.value);
+    props.onSearch(event);
   };
   // const handleMouseOver = (event) => console.log(event);
 
@@ -94,10 +95,13 @@ function App() {
   //   },
   // ];
 
+  const handleSearch = (event) => {
+    console.log(event.target.value);
+  };
   return (
     <div>
       <h1>Hello, {getTitle("React")}</h1>
-      <Search />
+      <Search onSearch={handleSearch} />
       <hr />
       <List list={stories} />
       {/* <List list={javascriptLibraries} title="JavaScript Libraries" /> */}

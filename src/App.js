@@ -32,8 +32,13 @@ const Item = ({ item }) => {
 };
 
 function Search() {
-  const handleChange = (event) => console.log(event);
-  const handleMouseOver = (event) => console.log(event);
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+    console.log(event.target.value);
+  };
+  // const handleMouseOver = (event) => console.log(event);
+
   return (
     <>
       <lable htmlFor="search">Search: </lable>
@@ -41,8 +46,11 @@ function Search() {
         id="search"
         type="text"
         onChange={handleChange}
-        onMouseOver={handleMouseOver}
+        // onMouseOver={handleMouseOver}
       ></input>
+      <p>
+        Searching for <strong>{searchTerm}</strong>
+      </p>
     </>
   );
 }
